@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>Portfolio - Ibrahim</title>
+
+  <link rel="shortcut icon" type="image/png" href="https://iturkben.github.io/Lab/PORTFOLIO/portfolio-main/img/favicon.png"/>
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:300,400,700" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenLite.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/utils/Draggable.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/plugins/CSSPlugin.min.js"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<link rel='stylesheet' href='https://unpkg.com/tachyons@4.7.0/css/tachyons.min.css'><link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div class="w-100 vh-100 relative" id="desktop">
+  <nav class="absolute top-0 left-0 right-0 flex items-center pv2 ph4">
+    <img class="logo mr4" src="img/home-3-256.png">
+    <a class="white link no-underline f7 mr4 b" href="#">{{activeWindowTitle}}</a>
+    <a class="white link no-underline f7 mr4" href="">Code</a>
+  </nav>
+  <div class="restrictor absolute right-2 bottom-2 left-2">
+    <transition-group name="fade">
+      <draggable-window :id="window.id" v-if="window.isShowing" v-for="(window, $index) in windows" :key="$index" :content="window.comp" :title="window.title" :index="window.id">
+        {{ window.content }}
+      </draggable-window>
+    </transition-group>
+  </div>
+  <div class="absolute top-0 right-0 bottom-0 h-100 flex flex-column pa4">
+    <div class="flex items-center pv3">
+      <button class="flex-auto bn bg-transparent" @click="openWindow('welcome')">
+        <figure class="mt0 mh0 mb3 w3 h3 db center icon me"></figure>
+        <h4 class="ma0">Moi</h4>
+      </button>
+    </div>
+    <div class="flex items-center pv3">
+      <button class="flex-auto bn bg-transparent" @click="openWindow('home')">
+        <figure class="mt0 mh0 mb3 w3 h3 db center icon home"></figure>
+        <h4 class="ma0">Compétences</h4>
+      </button>
+    </div>
+    <div class="flex items-center pv3">
+      <button class="flex-auto bn bg-transparent" @click="openWindow('writing')">
+        <figure class="mt0 mh0 mb3 w3 h3 db center icon writing"></figure>
+        <h4 class="ma0">Parcours</h4>
+      </button>
+    </div>
+  </div>
+</div>
+
+<script type="x/template" id="draggable-window">
+	<div :id="id" class="window absolute bg-white ba bw2 b--black">
+    <div class="bb b--black bw2 flex items-center pa1">
+      <button @click="closeWindow" class="bg-transparent bn dim flex items-center">
+				<!-- Bauhaus FTW -->
+      	<i class="material-icons mr1 f5">change_history</i>
+        <i class="material-icons mr1 f5">crop_square</i>
+        <i class="material-icons f6">radio_button_unchecked</i>
+      </button>
+    </div>
+    <div class="pa3">
+    	<div :is="content"></div>
+    </div>
+  </div>
+</script>
+
+<script type="text/x-template" id="welcome-template">
+	<div class="measure">
+  		<p class="mt0"> Je suis <a class="dark-pink link no-underline" href="https://www.linkedin.com/in/ibrahim-turkben-80140a236/" target="_blank">Ibrahim TURKBEN</a></p>
+		<p>Depuis mon plus jeune âge, l'univers de l'informatique m'a toujours captivé. J'éprouve un réel plaisir à explorer et assimiler de nouveaux savoirs, quel que soit le domaine. Doté d'une grande curiosité et d'une capacité d'adaptation rapide, je m'intègre aisément dans de nouveaux environnements professionnels.</p>
+		<p>La plupart de mes compétences techniques sont le résultat d'un apprentissage autodidacte approfondi, complété par l'expérience pratique acquise durant mon alternance et enrichi par ma formation académique.</p>
+	</div>
+</script>
+
+<script type="text/x-template" id="home-template">
+	<div class="measure">
+  		<p class="mt0">Mes compétences en informatique sont diversifiées et s'étendent à travers plusieurs domaines clés. </p>
+		<p>En programmation, je possède de solides bases en <strong>C++</strong> et <strong>Python</strong>, acquises en partie à la FAC et durant ma formation. Concernant les bases de données, j'ai pas mal joué avec le <strong>SQL</strong>. Entre les cours à la fac et les défis pratiques pendant mon alternance, j'ai eu l'occasion de bien me familiariser avec.</p>
+		<p>J'ai également développé une bonne connaissance en développement web, maitrisant les fondamentaux du <strong>HTML</strong>, <strong>CSS</strong>, et <strong>JavaScript</strong>, compétences que j'ai pu mettre en pratique dans la création de mon portfolio et d'autres projets personnels. Par ailleurs, ma compétence avec les outils Office est un atout dans la réalisation de diverses tâches administratives et de gestion.</p>
+		<p>Mon expérience en gestion d'outils de développement inclut des notions de <strong>Git</strong>, <strong>GitHub</strong>, <strong>GitLab</strong>, ainsi que l'utilisation efficace de <strong>VSCode</strong> et des bases en <strong>Docker</strong>. Ma maîtrise des systèmes d'exploitation <strong>Windows</strong> et <strong>Linux</strong>, combinée à mon expérience en administration de parc informatique et support utilisateur, témoigne de mes compétences techniques polyvalentes.</p>
+		<p>Enfin, mes compétences en réseau et sécurité, acquises à travers mon implication dans divers projets et un CTF, ainsi que ma capacité d'adaptation, mon esprit d'équipe et ma résolution de problèmes, sont des atouts majeurs dans ma carrière professionnelle en informatique.</p>
+	</div>
+</script>
+
+<script type="text/x-template" id="writing-template">
+  <div class="measure">
+      <p>Mon parcours académique a commencé par l'obtention d'un <strong>Bac Scientifique, option mathématiques</strong>, en 2018 au <strong>lycée Claude Bernard</strong> à Villefranche-Sur-Saône. Par la suite, je me suis orienté vers des études de <strong>Maths et Informatique</strong> à l'<strong>Université Claude Bernard de Lyon 1</strong>, où j'ai complété une première et une deuxième année de licence entre 2019 et 2021. Cependant, après un redoublement en deuxième année, j'ai décidé de revoir mon orientation.</p>
+      <p>En 2022, j'ai embrassé une nouvelle voie en commençant un apprentissage en <strong>Technicien Supérieur Réseau Informatique et Sécurité</strong> à l'<strong>école de la MFR</strong> à Villefranche-Sur-Saône. Cette formation, réalisée en alternance avec mon rôle chez <strong>Groupe Lépine</strong> à Genay, m'a permis d'obtenir un diplôme <strong>BAC+2</strong> et de développer des compétences pratiques dans le domaine des réseaux informatiques et de la sécurité.</p>
+      <p>Ce cheminement m'a mené à découvrir ma passion pour la <strong>data science</strong>. Mon aspiration est d'être en constante apprentissage, et le domaine de la <strong>data science</strong>, riche en opportunités d'apprentissage continu et en possibilités d'innovation, correspond parfaitement à mes ambitions. Je suis motivé par l'idée de transformer mes idées de projet en réalité grâce à des connaissances approfondies en data science.</p>
+  </div>
+</script>
+
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.10/vue.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/interact.js/1.2.8/interact.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js'></script>
+<script src='https://cdn.rawgit.com/HugoGiraudel/Countdown.js/a88b61fc/countdown.min.js'></script><script  src="./script.js"></script>
+
+</body>
+</html>
