@@ -1,5 +1,4 @@
 # portfolio
 
-https://iturkben.github.io/Lab/PORTFOLIO/portfolio-main/
+https://iturkben.github.io/PORTFOLIO/
 
-https://www.lankyduck.com/legacy/projects/Website-Tests/index.html
